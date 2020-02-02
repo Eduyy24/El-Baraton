@@ -3,12 +3,19 @@ import {TouchableOpacity, Text, StyleSheet, View} from 'react-native';
 import {secundaryColor, general} from '../../../styles/styles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default function EndButtonCart(params) {
+/**
+ * Componente con la interfaz del boton final para la vizualización del numero de productos agregados al carrito
+ * y el redireccionamiento a dicha pagina
+ *
+ * @param {() => void} props.onPress Función que se consume al presionar el botón
+ * @param {number} props.numProducts Números de productos agregados al carrito de compras
+ */
+export default function EndButtonCart(props) {
   return (
-    <TouchableOpacity style={styles.containerbutton}>
+    <TouchableOpacity style={styles.containerbutton} onPress={props.onPress}>
       <View style={general.horizontal}>
         <Icon name="cart-arrow-down" size={24} color="white" />
-        <Text style={styles.text}>1</Text>
+        <Text style={styles.text}>{props.numProducts || '0'}</Text>
       </View>
       <View style={general.horizontal}>
         <Text style={styles.text}>IR AL CARRITO</Text>

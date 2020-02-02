@@ -17,6 +17,19 @@ export const primaryColor = '#999AC6';
 export const secundaryColor = '#B8BACF';
 export const textColor = '#82816D';
 
+export function generateBackColor() {
+  const colors = [
+    '#FFF8E1',
+    '#FCE4EC',
+    '#F3E5F5',
+    '#E3F2FD',
+    '#F1F8E9',
+    '#EFEBE9',
+  ];
+  const num = Math.floor(Math.random() * colors.length);
+  return colors[num];
+}
+
 export const general = StyleSheet.create({
   container: {
     flex: 1,

@@ -1,12 +1,13 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import EndButtonCart from './components/end-button-cart';
+import SubCategoriesShip from './components/sub-categories-ship';
 
 export default function CategoryLayout(props) {
   return (
     <View style={styles.container}>
       <View style={styles.section1}>
-        <Text>1</Text>
+        <SubCategoriesShip />
       </View>
       <View style={styles.section2}>
         <View style={styles.sectionRoderBy}>
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   section1: {
-    flex: 0.7,
+    flex: 0.75,
     backgroundColor: 'white',
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   section2: {
-    flex: 0.3,
+    flex: 0.25,
   },
   sectionRoderBy: {
     flex: 1,
