@@ -1,11 +1,27 @@
 import React from 'react';
 import BaseBackground from '../../components/background-base';
-import {Text, View, StyleSheet, ScrollView} from 'react-native';
+import {Text, View, StyleSheet, FlatList} from 'react-native';
 import {general, textColor} from '../../styles/styles';
 import CardCategory from './components/card-category';
 
+/**
+ * Componente que define la interfaz de la pagina Home
+ * @param {(category: string) => void} onPressCategory Funcion que consume el componente @see {@link CardCategory}
+ * @param {object[]} categories Array de objetos con la siguiente estructura
+ * @type {
+    name: string,
+    image?: string,
+    id: string,
+    sublevels?: object[],
+  }
+ */
 
-export default function HomeLayout() {
+export default function HomeLayout(props) {
+  const {categories} = props;
+  const _renderItem = ({item}) => {
+    console.log(item);
+    return <CardCategory title={item.name} uriImage={item.image} />;
+  };
   return (
     <BaseBackground>
       <View style={styles.containerTitle}>
@@ -14,9 +30,8 @@ export default function HomeLayout() {
       </View>
       <View style={styles.containerCategories}>
         <Text style={styles.textCategories}>Categorias</Text>
-        <ScrollView>
-          <CardCategory />
-        </ScrollView>
+
+        <FlatList data={categories} renderItem={_renderItem} />
       </View>
     </BaseBackground>
   );

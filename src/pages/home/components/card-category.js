@@ -14,9 +14,9 @@ const {height} = Dimensions.get('window');
  * que le permite al usuario acceder  e interactuar con la información de la misma.
  *
  * @see {https://xd.adobe.com/view/6362b65a-1893-4949-4a9c-9489780dff10-1553/grid}
- * @param {string} uriImage = Url de la imagen representativa de la categoría @implements
- * @param {string} title = Nombre de la categoría @implements
- * @param {function} onPress = Función que resuelve el touch del usuario @implements
+ * @param {string} uriImage Url de la imagen representativa de la categoría
+ * @param {string} title Nombre de la categoría
+ * @param {function} onPress Función que resuelve el touch del usuario
  */
 
 export default function CardCategory(props) {

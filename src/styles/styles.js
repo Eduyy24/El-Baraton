@@ -1,6 +1,10 @@
 import {StyleSheet, Dimensions} from 'react-native';
 const {width} = Dimensions.get('window');
 
+/**
+ * Se agregan estilos y/o configuraciones de interfaz globales para uso generalizado
+ */
+
 export const fontSize12 = width * 0.028;
 export const fontSize14 = width * 0.033;
 export const fontSize16 = width * 0.0378;
