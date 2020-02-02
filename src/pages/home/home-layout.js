@@ -6,7 +6,7 @@ import CardCategory from './components/card-category';
 
 /**
  * Componente que define la interfaz de la pagina Home
- * @param {(category: string) => void} onPressCategory Funcion que consume el componente @see {@link CardCategory}
+ * @param {(id: number) => void} onPressCategory Funcion que consume el componente CardCategory @see {@link CardCategory}
  * @param {object[]} categories Array de objetos con la siguiente estructura
  * @type {
     name: string,
@@ -17,11 +17,17 @@ import CardCategory from './components/card-category';
  */
 
 export default function HomeLayout(props) {
-  const {categories} = props;
-  const _renderItem = ({item}) => {
-    console.log(item);
-    return <CardCategory title={item.name} uriImage={item.image} />;
+  const {categories, onPressCategory} = props;
+  const _renderItem = ({item, index}) => {
+    return (
+      <CardCategory
+        title={item.name}
+        uriImage={item.image}
+        onPress={() => onPressCategory(index)}
+      />
+    );
   };
+
   return (
     <BaseBackground>
       <View style={styles.containerTitle}>

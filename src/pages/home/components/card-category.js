@@ -16,12 +16,15 @@ const {height} = Dimensions.get('window');
  * @see {https://xd.adobe.com/view/6362b65a-1893-4949-4a9c-9489780dff10-1553/grid}
  * @param {string} uriImage Url de la imagen representativa de la categoría
  * @param {string} title Nombre de la categoría
- * @param {function} onPress Función que resuelve el touch del usuario
+ * @param {() => void)} onPress Función que resuelve el touch del usuario
  */
 
 export default function CardCategory(props) {
   return (
-    <TouchableOpacity style={styles.containerCard} activeOpacity={0.8}>
+    <TouchableOpacity
+      style={styles.containerCard}
+      activeOpacity={0.8}
+      onPress={props.onPress}>
       <Image source={{uri: props.uriImage}} style={styles.imageCard} />
       <Text style={styles.textCategory}>{props.title || ''}</Text>
     </TouchableOpacity>

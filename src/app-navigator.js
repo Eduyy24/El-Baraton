@@ -1,9 +1,11 @@
 import {createStackNavigator} from 'react-navigation-stack';
 import Home from './pages/home/home';
+import Category from './pages/category/category';
 
 const Main = createStackNavigator(
   {
     Home,
+    Category,
   },
   {
     defaultNavigationOptions: {

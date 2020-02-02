@@ -11,13 +11,19 @@ class Home extends Component {
     actions.setCategoriesStore(categoriesFile.categories);
   }
 
-  onPressCategory = () => {
-    
-  }
+  onPressCategory = id => {
+    const {navigation} = this.props;
+    navigation.navigate('Category', {id});
+  };
 
   render() {
     const {categories} = this.props;
-    return <HomeLayout categories={categories} />;
+    return (
+      <HomeLayout
+        categories={categories}
+        onPressCategory={this.onPressCategory}
+      />
+    );
   }
 }
 
