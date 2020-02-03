@@ -1528,3 +1528,188 @@ exports[`Snapshot test for components in page Category Render correctly componen
   </Text>
 </View>
 `;
+
+exports[`Snapshot test for components in page Home Render correctly component CardCategory 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "height": 266.8,
+      "opacity": 1,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "",
+      }
+    }
+    style={
+      Object {
+        "height": 266.8,
+      }
+    }
+  />
+  <Text
+    style={
+      Object {
+        "color": "white",
+        "fontSize": 34.875,
+        "fontWeight": "500",
+        "left": 16,
+        "position": "absolute",
+        "top": 106.72,
+      }
+    }
+  >
+    Almuerzos
+  </Text>
+</View>
+`;
+
+exports[`Snapshot test for components in page Home Render correctly component HomeLayout 1`] = `
+<View
+  onLayout={[Function]}
+>
+  <View
+    accessibilityIgnoresInvertColors={true}
+    style={
+      Object {
+        "backgroundColor": "#D2D5DD",
+        "height": "100%",
+        "width": "100%",
+      }
+    }
+  >
+    <Image
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      source={Object {}}
+      style={
+        Array [
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          Object {
+            "height": "100%",
+            "width": "100%",
+          },
+          undefined,
+        ]
+      }
+    />
+    <View
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "marginVertical": 24,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#82816D",
+              "fontSize": 85.5,
+              "fontWeight": "bold",
+            }
+          }
+        >
+          El baratón
+        </Text>
+        <Text
+          style={
+            Object {
+              "color": "#82816D",
+              "fontSize": 34.875,
+              "fontWeight": "500",
+            }
+          }
+        >
+          ¡Los mejores precios!
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "backgroundColor": "white",
+            "borderTopLeftRadius": 20,
+            "borderTopRightRadius": 20,
+            "elevation": 5,
+            "flex": 1,
+            "marginHorizontal": 16,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#82816D",
+              "fontSize": 34.875,
+              "fontWeight": "500",
+              "marginVertical": 10,
+              "textAlign": "center",
+            }
+          }
+        >
+          Categorias
+        </Text>
+        <RCTScrollView
+          disableVirtualization={false}
+          getItem={[Function]}
+          getItemCount={[Function]}
+          horizontal={false}
+          initialNumToRender={10}
+          keyExtractor={[Function]}
+          maxToRenderPerBatch={10}
+          numColumns={1}
+          onContentSizeChange={[Function]}
+          onEndReachedThreshold={2}
+          onLayout={[Function]}
+          onMomentumScrollEnd={[Function]}
+          onScroll={[Function]}
+          onScrollBeginDrag={[Function]}
+          onScrollEndDrag={[Function]}
+          removeClippedSubviews={false}
+          renderItem={[Function]}
+          scrollEventThrottle={50}
+          stickyHeaderIndices={Array []}
+          updateCellsBatchingPeriod={50}
+          viewabilityConfigCallbackPairs={Array []}
+          windowSize={21}
+        >
+          <View />
+        </RCTScrollView>
+      </View>
+    </View>
+  </View>
+</View>
+`;

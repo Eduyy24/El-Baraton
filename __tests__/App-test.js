@@ -27,6 +27,13 @@ import OptionOrderShip from '../src/pages/category/components/option-order-chip'
 import SubCategoriesShip from '../src/pages/category/components/sub-categories-ship';
 import CategoryLayout from '../src/pages/category/category-layout';
 
+// import components from Home
+import CardCategory from '../src/pages/home/components/card-category';
+import HomeLayout from '../src/pages/home/home-layout';
+
+// import utils
+import {formatMoney} from '../src/utils/utils';
+
 const product = {
   quantity: 839,
   price: '$3,767',
@@ -119,5 +126,29 @@ describe('Snapshot test for components in page Category', () => {
   test('Render correctly component CategoryLayout', () => {
     const tree = renderer.create(<CategoryLayout />).toJSON();
     expect(tree).toMatchSnapshot();
+  });
+});
+
+describe('Snapshot test for components in page Home', () => {
+  test('Render correctly component CardCategory', () => {
+    const tree = renderer
+      .create(<CardCategory uriImage="" title="Almuerzos" />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  test('Render correctly component HomeLayout', () => {
+    const tree = renderer.create(<HomeLayout />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});
+
+describe('Test for format correctly string and number to money format', () => {
+  test('Format string money correctly', () => {
+    expect(formatMoney('10000')).toEqual('$ 10,000');
+  });
+
+  test('Format number money correctly', () => {
+    expect(formatMoney(10000)).toEqual('$ 10,000');
   });
 });
