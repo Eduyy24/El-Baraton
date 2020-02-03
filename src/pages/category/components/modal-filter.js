@@ -13,6 +13,13 @@ import Slider from '@react-native-community/slider';
 import Button from '../../../components/button';
 import {formatMoney} from '../../../utils/utils';
 
+/**
+ * Componente que renderiza y controla la lógica detras de las opciones de filtrado,
+ * por rango cantidad de productos, rango de precio y productos disponibles, para la implementación de los rangos
+ * se usó un slider
+ * @param {function} props.onPressFilterModal Función que recibe los productos filtrados @see{@Link Category}
+ * @param {Array} props.product Array con los productos desplegados en la vista para ser filtrados.
+ */
 export default class ModalFilter extends PureComponent {
   state = {
     stateBtnAvailable: false,
@@ -20,6 +27,10 @@ export default class ModalFilter extends PureComponent {
     quantity: 0,
     price: 0,
   };
+
+  /** Controla el estado activo o incativo de los botones para filtrar por disponibilidad
+   * @param {string} idBtn Tipo del boton prescionado
+   */
 
   onPressButton = idBtn => {
     if (idBtn === 'available') {
@@ -29,10 +40,16 @@ export default class ModalFilter extends PureComponent {
     }
   };
 
+  /**Lisener del slider de Cantidad
+   * @param {string} cant Valor retornado por el Slider
+   */
   onChangeQuantity = cant => {
     this.setState({quantity: parseInt(cant, 10)});
   };
 
+  /**Lisener del slider de Precio
+   * @param {string} cant Valor retornado por el Slider
+   */
   onChagePrice = cant => {
     this.setState({price: parseInt(cant, 10)});
   };

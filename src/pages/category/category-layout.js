@@ -8,6 +8,18 @@ import CardProduct from './components/card-product';
 import {textColor, general, primaryColor} from '../../styles/styles';
 import OptionOrderShip from './components/option-order-chip';
 
+/**
+ * Componente que renderiza todos los componentes de la vista de Category,
+ * que permite toda la funcionalidad definida en Category.js @see{@Link Category}
+ * @param {Array} props.initialData Array de objetos de sub-categoria que pinta la primera sección
+ * @param {Array} props.productsShow Array de objetos de productos a mostrar en la vista.
+ * @param {function} props.onPressfilter Función @see{@Link Category}
+ * @param {function} props.onPressAddCart Función @see{@Link Category}
+ * @param {function} props.onPressOrder Función @see{@Link Category}
+ * @param {function} props.onPressgoToCart Función que redireccion a la pagina de "Cart" carrito de compras
+ * @param {number} props.numProductCart Numero de productos agregados al carrito de compras
+ * @param {children} props.modalFilter Componente encargado de filtrar los productos, devulve un nuevo array.
+ */
 export default function CategoryLayout(props) {
   const {
     initialData,

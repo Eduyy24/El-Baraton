@@ -12,6 +12,12 @@ import {formatMoney} from '../../../utils/utils';
 import {textColor, general, primaryColor} from '../../../styles/styles';
 const {width} = Dimensions.get('window');
 
+/**
+ * Componente que renderiza la información del producto con las funcionalidades definidas en el diseño.
+ *
+ * @param {Object} props.product Informacion dle producto a renderizar
+ * @param {funcion} props.onPressAddCart Función Función @see{@Link Category}
+ */
 export default function CardProduct(props) {
   const {product, onPressAddCart} = props;
 
