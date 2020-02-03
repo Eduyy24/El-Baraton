@@ -5,7 +5,7 @@ import EndButtonCart from './components/end-button-cart';
 import SubCategoriesShip from './components/sub-categories-ship';
 import Line from '../../components/line';
 import CardProduct from './components/card-product';
-import {textColor, general, primaryColor} from '../../styles/styles';
+import {textColor, general, primaryColor, generateBackColor} from '../../styles/styles';
 import OptionOrderShip from './components/option-order-chip';
 
 /**
@@ -42,6 +42,7 @@ export default function CategoryLayout(props) {
           onPress={() =>
             props.onPressShipSubCategory(item.id, index + 1, item.sublevels)
           }
+          color={generateBackColor()}
         />
       )}
     />

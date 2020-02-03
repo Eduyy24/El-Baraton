@@ -7,6 +7,7 @@ import {generateBackColor, textColor, fontSize14} from '../../../styles/styles';
  *
  * @param {string} props.title Nombre del tarjet ship
  * @param {() => void} props.onPress Función que consumo el evento touch sobre el tarjet ship
+ * @param {string} props.color color generado de manera aleatoria
  */
 
 export default function SubCategoriesShip(props) {
@@ -15,7 +16,9 @@ export default function SubCategoriesShip(props) {
       style={styles.containerShip}
       onPress={props.onPress}
       activeOpacity={0.5}>
-      <Text style={styles.text}>{props.title || ''}</Text>
+      <Text style={{...styles.text, backgroundColor: props.color || 'white'}}>
+        {props.title || ''}
+      </Text>
     </TouchableOpacity>
   );
 }
@@ -29,7 +32,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: textColor,
     fontSize: fontSize14,
-    backgroundColor: generateBackColor(),
     padding: 10,
     margin: 10,
     borderRadius: 20,

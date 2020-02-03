@@ -7,6 +7,7 @@ import {textColor, fontSize14} from '../../../styles/styles';
  *
  * @param {string} props.title Nombre del tarjet ship
  * @param {() => void} props.onPress Función que consumo el evento touch sobre el tarjet ship
+ * @param {string} props.color Color ramdon
  */
 
 export default function OptionOrderShip(props) {
