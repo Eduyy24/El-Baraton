@@ -16,6 +16,7 @@ export default function CategoryLayout(props) {
     onPressAddCart,
     numProductCart,
     onPressOrder,
+    onPressgoToCart
   } = props;
 
   const renderSectionSubCategory = (data, index) => (
@@ -83,7 +84,7 @@ export default function CategoryLayout(props) {
             />
           </View>
         </View>
-        <EndButtonCart numProducts={numProductCart} />
+        <EndButtonCart numProducts={numProductCart} onPress={onPressgoToCart} />
       </View>
     </View>
   );

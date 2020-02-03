@@ -101,7 +101,7 @@ class Category extends Component {
 
   render() {
     const {subCategories, productsShow} = this.state;
-    const {cart} = this.props;
+    const {cart, navigation} = this.props;
     return (
       <CategoryLayout
         initialData={subCategories}
@@ -111,6 +111,7 @@ class Category extends Component {
         onPressOrder={this.onPressOrder}
         onPressAddCart={this.onPressAddCart}
         numProductCart={cart.length}
+        onPressgoToCart={() => navigation.navigate('Cart')}
       />
     );
   }
