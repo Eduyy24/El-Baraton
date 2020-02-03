@@ -12,8 +12,22 @@ import Slider from '@react-native-community/slider';
 import Button from '../../../components/button';
 
 export default class ModalFilter extends PureComponent {
+  state = {
+    stateBtnAvailable: false,
+    stateBtnNoAvailable: false,
+  };
+
+  onPressButton = idBtn => {
+    if (idBtn === 'available') {
+      this.setState({stateBtnAvailable: true, stateBtnNoAvailable: false});
+    } else {
+      this.setState({stateBtnAvailable: false, stateBtnNoAvailable: true});
+    }
+  };
+
   render() {
     const {visibleModal, onPressCloseModal} = this.props;
+    const {stateBtnAvailable, stateBtnNoAvailable} = this.state;
     return (
       <ModalCanvas visibleModal={visibleModal}>
         <TouchableOpacity style={styles.flex} onPress={onPressCloseModal} />
@@ -21,8 +35,16 @@ export default class ModalFilter extends PureComponent {
           <Text style={styles.textFilter}>Filtrar por</Text>
           <Text style={styles.textAvailable}>Disponibilidad</Text>
           <View style={styles.containerButtonAvailable}>
-            <ButtonBorderLine title="Disponible" />
-            <ButtonBorderLine title="No disponible" />
+            <ButtonBorderLine
+              title="Disponible"
+              state={stateBtnAvailable}
+              onPress={() => this.onPressButton('available')}
+            />
+            <ButtonBorderLine
+              title="No disponible"
+              state={stateBtnNoAvailable}
+              onPress={() => this.onPressButton('no-available')}
+            />
           </View>
           <Text style={styles.textAvailable}>Cantidad</Text>
           <View>
@@ -54,7 +76,7 @@ export default class ModalFilter extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-  slider:{width: '100%', height: 40},
+  slider: {width: '100%', height: 40},
   containerButtonAvailable: {
     flexDirection: 'row',
     justifyContent: 'space-around',

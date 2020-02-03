@@ -106,7 +106,7 @@ class Category extends Component {
   };
 
   onPressFilterModal = products => {
-    this.setState({productsShow: products});
+    this.setState({productsShow: products, auxProductsShow: products});
   };
 
   render() {
