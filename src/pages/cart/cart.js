@@ -6,15 +6,47 @@ import CartLayout from './cart-layout';
 import {Alert} from 'react-native';
 
 class Cart extends Component {
+  state = {update: false};
   onPressBuy = () => {
     const {actions} = this.props;
     actions.cleanProducCarttStore();
     Alert.alert('¡Tu compra se a realizado con exito!');
   };
 
+  onPressMore = index => {
+    const {cart, actions} = this.props;
+    cart[index].multiplier += 1;
+    actions.setProductCartStore(cart);
+    this.setState({update: this.state.update}); //obligar a hacer re-render
+  };
+
+  onPressMinus = index => {
+    const {cart, actions} = this.props;
+    if (cart[index].multiplier !== 1) {
+      cart[index].multiplier -= 1;
+    }
+    actions.setProductCartStore(cart);
+    this.setState({update: this.state.update}); //obligar a hacer re-render
+  };
+
+  onPressDelete = index => {
+    const {cart, actions} = this.props;
+    cart.splice(index, 1);
+    actions.setProductCartStore(cart);
+    this.setState({update: this.state.update}); //obligar a hacer re-render
+  };
+
   render() {
     const {cart} = this.props;
-    return <CartLayout dataCart={cart} onPressBuy={this.onPressBuy} />;
+    return (
+      <CartLayout
+        dataCart={cart}
+        onPressBuy={this.onPressBuy}
+        onPressMore={this.onPressMore}
+        onPressMinus={this.onPressMinus}
+        onPressDelete={this.onPressDelete}
+      />
+    );
   }
 }
 

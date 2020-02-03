@@ -12,7 +12,7 @@ import {textColor, primaryColor} from '../../../styles/styles';
 const {width} = Dimensions.get('window');
 
 export default function CardProductCart(props) {
-  const {product, onPressMinus, onPressMore, multiplier} = props;
+  const {product, onPressMinus, onPressMore, onPressDelete} = props;
   return (
     <View style={styles.container}>
       <View style={styles.contentImage}>
@@ -26,18 +26,26 @@ export default function CardProductCart(props) {
             <TouchableOpacity onPress={onPressMinus}>
               <Icon2 name="minuscircle" size={24} color={primaryColor} />
             </TouchableOpacity>
-            <Text>{multiplier || '0'}</Text>
+            <Text>{product.multiplier || '1'}</Text>
             <TouchableOpacity onPress={onPressMore}>
               <Icon2 name="pluscircle" size={24} color={primaryColor} />
             </TouchableOpacity>
           </View>
         </View>
       </View>
+      <TouchableOpacity onPress={onPressDelete} style={styles.buttonDelete}>
+        <Icon2 name="delete" size={24} color={primaryColor} />
+      </TouchableOpacity>
     </View>
   );
 }
 const sizeImage = width * 0.2;
 const styles = StyleSheet.create({
+  buttonDelete: {
+    position: 'absolute',
+    top: 5,
+    right: 0,
+  },
   containerButtons: {
     width: 85,
     height: 35,

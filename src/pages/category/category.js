@@ -88,13 +88,13 @@ class Category extends Component {
   };
 
   onPressfilter = () => {
-    const {actions} = this.props;
-    actions.cleanProducCarttStore();
+    // implementar
   };
 
   onPressAddCart = product => {
     const {actions, cart} = this.props;
-    cart.push(product);
+    //Se agrega el atributo multiplier para la gestión de la cantidad de productos en la page de Cart
+    cart.push({...product, multiplier: 1});
     actions.setProductCartStore(cart);
     this.setState({productsShow: this.state.productsShow}); //obligar a hacer re-render
   };
