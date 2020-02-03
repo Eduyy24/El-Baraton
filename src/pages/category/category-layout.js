@@ -1,12 +1,15 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import EndButtonCart from './components/end-button-cart';
 import SubCategoriesShip from './components/sub-categories-ship';
 import Line from '../../components/line';
 import CardProduct from './components/card-product';
+import {textColor, general, primaryColor} from '../../styles/styles';
+import OptionOrderShip from './components/option-order-chip';
 
 export default function CategoryLayout(props) {
-  const {initialData, productsShow} = props;
+  const {initialData, productsShow, onPressfilter} = props;
 
   const renderSectionSubCategory = (data, index) => (
     <FlatList
@@ -46,6 +49,7 @@ export default function CategoryLayout(props) {
                 priceProduct={item.price}
                 onPressAddCart={() => {}}
                 available={item.available}
+                quantity={item.quantity}
               />
             )}
             extraData={productsShow}
@@ -53,11 +57,28 @@ export default function CategoryLayout(props) {
             keyExtractor={(item, index) => index.toString()}
             contentContainerStyle={{alignItems: 'center'}}
           />
+          <TouchableOpacity style={styles.filterButton} onPress={onPressfilter}>
+            <Icon name="filter-variant" size={24} color="white" />
+          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.section2}>
         <View style={styles.sectionRoderBy}>
-          <Text>2</Text>
+          <Text style={styles.textOrderBy}>Ordenar por</Text>
+          <View style={styles.containerOptionsOrder}>
+            <OptionOrderShip
+              title="Precio"
+              onPress={() => onPressfilter('price')}
+            />
+            <OptionOrderShip
+              title="Disponibilidad"
+              onPress={() => onPressfilter('available')}
+            />
+            <OptionOrderShip
+              title="Cantidad"
+              onPress={() => onPressfilter('quantity')}
+            />
+          </View>
         </View>
         <EndButtonCart />
       </View>
@@ -70,7 +91,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   section1: {
-    flex: 0.75,
+    flex: 0.8,
     backgroundColor: 'white',
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
@@ -78,10 +99,11 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   section2: {
-    flex: 0.25,
+    flex: 0.2,
   },
   sectionRoderBy: {
     flex: 1,
+    padding: 16,
   },
   sectionSubCategories: {
     paddingHorizontal: 16,
@@ -89,5 +111,27 @@ const styles = StyleSheet.create({
   sectionProducts: {
     flex: 1,
     flexDirection: 'row',
+  },
+  textOrderBy: {
+    color: textColor,
+    ...general.medium14,
+    textAlign: 'center',
+  },
+  containerOptionsOrder: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  filterButton: {
+    position: 'absolute',
+    right: 10,
+    bottom: 50,
+    backgroundColor: primaryColor,
+    borderRadius: 25,
+    height: 50,
+    width: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 5,
   },
 });

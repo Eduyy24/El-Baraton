@@ -12,6 +12,7 @@ class Category extends Component {
   state = {
     subCategories: [],
     productsShow: [],
+    auxProductsShow: [],
   };
 
   componentDidMount() {
@@ -21,9 +22,13 @@ class Category extends Component {
     //se extrae el id de la categoría para consultar toda la información de la misma.
     const id = navigation.getParam('id');
     subCategories.push(categories[id].sublevels);
+    const productsFiltered = products.filter(
+      product => product.sublevel_id === id,
+    );
     this.setState({
       subCategories,
-      productsShow: products.filter(product => product.sublevel_id === id),
+      productsShow: productsFiltered,
+      auxProductsShow: productsFiltered,
     });
   }
 
@@ -48,10 +53,38 @@ class Category extends Component {
       }
     }
 
+    const productsFiltered = products.filter(
+      product => product.sublevel_id === id,
+    );
     this.setState({
       subCategories,
-      productsShow: products.filter(product => product.sublevel_id === id),
+      productsShow: productsFiltered,
+      auxProductsShow: productsFiltered,
     });
+  };
+
+  onPressfilter = type => {
+    var {productsShow, auxProductsShow} = this.state;
+    switch (type) {
+      case 'price':
+        productsShow = auxProductsShow.sort((a, b) => {
+          const value1 = a.price.replace('$', '').replace(',', '');
+          const value2 = b.price.replace('$', '').replace(',', '');
+          return value1 - value2;
+        });
+        break;
+      case 'available':
+        productsShow = auxProductsShow.sort((a, b) => {
+          return b.available - a.available;
+        });
+        break;
+      case 'quantity':
+        productsShow = auxProductsShow.sort((a, b) => {
+          return a.quantity - b.quantity;
+        });
+        break;
+    }
+    this.setState({productsShow});
   };
 
   render() {
@@ -61,6 +94,7 @@ class Category extends Component {
         initialData={subCategories}
         onPressShipSubCategory={this.onPressShipSubCategory}
         productsShow={productsShow}
+        onPressfilter={this.onPressfilter}
       />
     );
   }

@@ -6,7 +6,7 @@ import {generateBackColor, textColor, fontSize14} from '../../../styles/styles';
  * Componente que renderiza el tarjet ship encargado de representar las sub categorías de cada producto.
  *
  * @param {string} props.title Nombre del tarjet ship
- * @param {() => void} props.onPress Función que consumo el evento de touch sobre el tarjet ship
+ * @param {() => void} props.onPress Función que consumo el evento touch sobre el tarjet ship
  */
 
 export default function SubCategoriesShip(props) {

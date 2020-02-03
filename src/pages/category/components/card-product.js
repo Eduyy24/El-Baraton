@@ -19,6 +19,7 @@ export default function CardProduct(props) {
     priceProduct,
     onPressAddCart,
     available,
+    quantity,
   } = props;
 
   const CheckComponent = propsCheck => (
@@ -41,6 +42,7 @@ export default function CardProduct(props) {
       />
       <Text style={styles.text}>{nameProduct || ''}</Text>
       <Text style={styles.text}>{formatMoney(priceProduct)}</Text>
+      <Text style={styles.text}>Stok: {quantity || '0'}</Text>
       <CheckComponent enable={available} />
       <TouchableOpacity style={styles.addCartButton} onPress={onPressAddCart}>
         <Icon name="cart-plus" size={24} color={primaryColor} />
@@ -55,7 +57,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     elevation: 3,
     width: sizeImage,
-    height: sizeImage * 1.3,
+    height: sizeImage * 1.4,
     borderRadius: 10,
     overflow: 'hidden',
     margin: 10,
