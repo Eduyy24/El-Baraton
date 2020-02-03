@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actionsMap from '../../actions/actions';
 import CategoryLayout from './category-layout';
+import ModalFilter from './components/modal-filter';
 
 class Category extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class Category extends Component {
     subCategories: [],
     productsShow: [],
     auxProductsShow: [],
+    visibleModal: false,
   };
 
   componentDidMount() {
@@ -88,7 +90,11 @@ class Category extends Component {
   };
 
   onPressfilter = () => {
-    // implementar
+    this.setState({visibleModal: true});
+  };
+
+  onPressCloseModal = () => {
+    this.setState({visibleModal: false});
   };
 
   onPressAddCart = product => {
@@ -100,7 +106,7 @@ class Category extends Component {
   };
 
   render() {
-    const {subCategories, productsShow} = this.state;
+    const {subCategories, productsShow, visibleModal} = this.state;
     const {cart, navigation} = this.props;
     return (
       <CategoryLayout
@@ -112,6 +118,12 @@ class Category extends Component {
         onPressAddCart={this.onPressAddCart}
         numProductCart={cart.length}
         onPressgoToCart={() => navigation.navigate('Cart')}
+        modalFilter={
+          <ModalFilter
+            visibleModal={visibleModal}
+            onPressCloseModal={this.onPressCloseModal}
+          />
+        }
       />
     );
   }

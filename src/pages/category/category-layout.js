@@ -17,6 +17,7 @@ export default function CategoryLayout(props) {
     numProductCart,
     onPressOrder,
     onPressgoToCart,
+    modalFilter,
   } = props;
 
   const renderSectionSubCategory = (data, index) => (
@@ -36,6 +37,7 @@ export default function CategoryLayout(props) {
 
   return (
     <View style={styles.container}>
+      {modalFilter}
       <View style={styles.section1}>
         <View style={styles.sectionSubCategories}>
           <FlatList
