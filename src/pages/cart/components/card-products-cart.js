@@ -11,6 +11,12 @@ import {
 import {textColor, primaryColor} from '../../../styles/styles';
 const {width} = Dimensions.get('window');
 
+/**
+ * Componente que renderiza la información del producto con los respectivos controles de editar cantidad,
+ * y eliminar el mismo @see{@link CartLayout}
+ * @param {Object} props.product Objeto con la información del producto a renderizar.
+ */
+
 export default function CardProductCart(props) {
   const {product, onPressMinus, onPressMore, onPressDelete} = props;
   return (
