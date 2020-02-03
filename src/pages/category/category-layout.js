@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, FlatList} from 'react-native';
 import EndButtonCart from './components/end-button-cart';
 import SubCategoriesShip from './components/sub-categories-ship';
 import Line from '../../components/line';
+import CardProduct from './components/card-product';
 
 export default function CategoryLayout(props) {
   const {initialData} = props;
@@ -27,13 +28,16 @@ export default function CategoryLayout(props) {
         <View style={styles.sectionSubCategories}>
           <FlatList
             data={initialData}
-            renderItem={({item, index}) => renderSectionSubCategory(item, index)}
+            renderItem={({item, index}) =>
+              renderSectionSubCategory(item, index)
+            }
             ItemSeparatorComponent={() => <Line />}
             keyExtractor={(item, index) => index.toString()}
           />
         </View>
         <View style={styles.sectionProducts}>
-          <Text>hola</Text>
+          <CardProduct/>
+          <CardProduct/>
         </View>
       </View>
       <View style={styles.section2}>
@@ -69,5 +73,6 @@ const styles = StyleSheet.create({
   },
   sectionProducts: {
     flex: 1,
+    flexDirection: 'row',
   },
 });

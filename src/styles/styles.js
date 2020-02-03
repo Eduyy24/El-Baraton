@@ -15,6 +15,7 @@ export const fontSize48 = width * 0.114;
 export const backgroundColor = '#D2D5DD';
 export const primaryColor = '#999AC6';
 export const secundaryColor = '#B8BACF';
+export const extraColor = '#E8EBE4';
 export const textColor = '#82816D';
 
 export function generateBackColor() {

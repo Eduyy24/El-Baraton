@@ -4,11 +4,13 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actionsMap from '../../actions/actions';
 import categoriesFile from '../../resources/categories.json';
+import productsFile from '../../resources/products.json';
 
 class Home extends Component {
   componentDidMount() {
     const {actions} = this.props;
     actions.setCategoriesStore(categoriesFile.categories);
+    actions.setProductStore(productsFile.products);
   }
 
   onPressCategory = id => {
