@@ -1,6 +1,11 @@
 import React from 'react';
 import {Modal, View, StatusBar, StyleSheet} from 'react-native';
 
+/**
+ * Componente genérico con una configuración base para la generación de modals
+ * @param {boolean} props.visibleModal Controla el estado de mostrar y ocultar el modal
+ * @param {boolean} props.children Componente hijo para ser renderizado dnetro del modal
+ */
 export default function ModalCanvas(props) {
   const {visibleModal, children} = props;
   return (

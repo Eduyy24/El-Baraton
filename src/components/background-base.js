@@ -16,6 +16,7 @@ const DismissKeyboard = ({children}) => (
   </TouchableWithoutFeedback>
 );
 
+/**Componente con la configuracion general de las paginas, se usa como padre de las mismas */
 export default function BaseBackground(props) {
   const {behavior, children} = props;
   return (

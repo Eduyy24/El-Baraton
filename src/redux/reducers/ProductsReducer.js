@@ -3,7 +3,11 @@ const inicialState = {
   categories: [],
   cart: [],
 };
-
+/**
+ * Reducer con las posibles acciones que se pueden tener sobre el
+ * @param {*} state Estado con los valores a persistir con o sin información, se recomienda su inicialización
+ * @param {*} action Objeto con los tipos de acciones a ejecutarse
+ */
 function ProductsReducer(state = inicialState, action) {
   switch (action.type) {
     case 'SET_PRODUCTS': {

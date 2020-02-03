@@ -54,6 +54,10 @@ export default class ModalFilter extends PureComponent {
     this.setState({price: parseInt(cant, 10)});
   };
 
+  /**
+   * Función encargar de aplicar los filtros una vez es presionado el boton "FILTRAR", el efecto de los
+   * filtros es acumulable.
+   */
   onPressFilter = () => {
     let {onPressFilterModal, products} = this.props;
     const {
@@ -62,18 +66,21 @@ export default class ModalFilter extends PureComponent {
       quantity,
       price,
     } = this.state;
+
+    // Si existe algun botón de disponibilidad habilitado se aplicara el filtro
     if (stateBtnAvailable) {
       products = products.filter(product => product.available);
     } else if (stateBtnNoAvailable) {
       products = products.filter(product => !product.available);
     }
-
+    // En caso de que exista un valor para la cantidad se filtran los valores menores o iguales a este
     if (quantity !== 0) {
       products = products.filter(product => {
         return product.quantity <= quantity;
       });
     }
 
+    // En caso de que exista un valor para el precio se filtran los valores menores o iguales a este
     if (price !== 0) {
       products = products.filter(product => {
         const priceFormat = product.price.replace('$', '').replace(',', '');

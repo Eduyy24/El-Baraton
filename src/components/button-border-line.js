@@ -2,6 +2,12 @@ import React from 'react';
 import {Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {textColor, fontSize14, primaryColor} from '../styles/styles';
 
+/**
+ * Componente que renderiza un boton de color blacon con bordes de color, con dos estados, habilitado y des habilitado
+ * @param {string} props.title Titulo del botón
+ * @param {function} props.onPress Evento de touch sobre el botón
+ * @param {boolean} props.state Estado del boton
+ */
 export default function ButtonBorderLine(props) {
   const {title, onPress, state} = props;
   return (

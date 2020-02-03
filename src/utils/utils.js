@@ -1,7 +1,7 @@
 import numeral from 'numeral';
-import {Alert} from 'react-native';
 
+/**
+ * Da formato de moneda $ ###,###, usando la libreria "numeral"
+ * @param {number | string} number Numero a ser formateada
+ */
 export const formatMoney = number => numeral(number).format('$ #, ## 0');
-
-export const alertError = msg =>
-  Alert.alert('Error', msg, [{text: 'OK'}], {cancelable: false});
