@@ -5,16 +5,20 @@ import {
   textColor,
   fontSize20,
   fontSize16,
+  fontSize14,
   primaryColor,
 } from '../../../styles/styles';
 import ButtonBorderLine from '../../../components/button-border-line';
 import Slider from '@react-native-community/slider';
 import Button from '../../../components/button';
+import {formatMoney} from '../../../utils/utils';
 
 export default class ModalFilter extends PureComponent {
   state = {
     stateBtnAvailable: false,
     stateBtnNoAvailable: false,
+    quantity: 0,
+    price: 0,
   };
 
   onPressButton = idBtn => {
@@ -25,9 +29,52 @@ export default class ModalFilter extends PureComponent {
     }
   };
 
+  onChangeQuantity = cant => {
+    this.setState({quantity: parseInt(cant, 10)});
+  };
+
+  onChagePrice = cant => {
+    this.setState({price: parseInt(cant, 10)});
+  };
+
+  onPressFilter = () => {
+    let {onPressFilterModal, products} = this.props;
+    const {
+      stateBtnAvailable,
+      stateBtnNoAvailable,
+      quantity,
+      price,
+    } = this.state;
+    if (stateBtnAvailable) {
+      products = products.filter(product => product.available);
+    } else if (stateBtnNoAvailable) {
+      products = products.filter(product => !product.available);
+    }
+
+    if (quantity !== 0) {
+      products = products.filter(product => {
+        return product.quantity <= quantity;
+      });
+    }
+
+    if (price !== 0) {
+      products = products.filter(product => {
+        const priceFormat = product.price.replace('$', '').replace(',', '');
+        return parseInt(priceFormat, 10) <= price;
+      });
+    }
+
+    onPressFilterModal(products);
+  };
+
   render() {
     const {visibleModal, onPressCloseModal} = this.props;
-    const {stateBtnAvailable, stateBtnNoAvailable} = this.state;
+    const {
+      stateBtnAvailable,
+      stateBtnNoAvailable,
+      price,
+      quantity,
+    } = this.state;
     return (
       <ModalCanvas visibleModal={visibleModal}>
         <TouchableOpacity style={styles.flex} onPress={onPressCloseModal} />
@@ -47,6 +94,7 @@ export default class ModalFilter extends PureComponent {
             />
           </View>
           <Text style={styles.textAvailable}>Cantidad</Text>
+          <Text style={styles.textCant}>{quantity}</Text>
           <View>
             <Slider
               style={styles.slider}
@@ -54,20 +102,25 @@ export default class ModalFilter extends PureComponent {
               maximumValue={1000}
               minimumTrackTintColor={primaryColor}
               thumbTintColor={primaryColor}
+              onValueChange={this.onChangeQuantity}
+              value={quantity}
             />
           </View>
           <Text style={styles.textAvailable}>Precio</Text>
+          <Text style={styles.textCant}>{formatMoney(price)}</Text>
           <View>
             <Slider
               style={styles.slider}
               minimumValue={0}
-              maximumValue={1000}
+              maximumValue={50000}
               minimumTrackTintColor={primaryColor}
               thumbTintColor={primaryColor}
+              onValueChange={this.onChagePrice}
+              value={price}
             />
           </View>
           <View style={{marginTop: 16}}>
-            <Button title="Filtrar" />
+            <Button title="Filtrar" onPress={this.onPressFilter} />
           </View>
         </View>
       </ModalCanvas>
@@ -76,6 +129,11 @@ export default class ModalFilter extends PureComponent {
 }
 
 const styles = StyleSheet.create({
+  textCant: {
+    color: textColor,
+    fontSize: fontSize14,
+    textAlign: 'center',
+  },
   slider: {width: '100%', height: 40},
   containerButtonAvailable: {
     flexDirection: 'row',

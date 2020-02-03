@@ -107,10 +107,16 @@ class Category extends Component {
 
   onPressFilterModal = products => {
     this.setState({productsShow: products, auxProductsShow: products});
+    this.onPressCloseModal();
   };
 
   render() {
-    const {subCategories, productsShow, visibleModal} = this.state;
+    const {
+      subCategories,
+      productsShow,
+      visibleModal,
+      auxProductsShow,
+    } = this.state;
     const {cart, navigation} = this.props;
     return (
       <CategoryLayout
@@ -126,7 +132,7 @@ class Category extends Component {
           <ModalFilter
             visibleModal={visibleModal}
             onPressCloseModal={this.onPressCloseModal}
-            products={productsShow}
+            products={auxProductsShow}
             onPressFilterModal={this.onPressFilterModal}
           />
         }
