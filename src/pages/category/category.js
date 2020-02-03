@@ -105,6 +105,10 @@ class Category extends Component {
     this.setState({productsShow: this.state.productsShow}); //obligar a hacer re-render
   };
 
+  onPressFilterModal = products => {
+    this.setState({productsShow: products});
+  };
+
   render() {
     const {subCategories, productsShow, visibleModal} = this.state;
     const {cart, navigation} = this.props;
@@ -122,6 +126,8 @@ class Category extends Component {
           <ModalFilter
             visibleModal={visibleModal}
             onPressCloseModal={this.onPressCloseModal}
+            products={productsShow}
+            onPressFilterModal={this.onPressFilterModal}
           />
         }
       />
