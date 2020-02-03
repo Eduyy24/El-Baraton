@@ -1,7 +1,7 @@
 import React from 'react';
 import BaseBackground from '../../components/background-base';
 import {Text, View, StyleSheet, FlatList} from 'react-native';
-import {general, textColor} from '../../styles/styles';
+import {general, textColor, fontSize48} from '../../styles/styles';
 import CardCategory from './components/card-category';
 
 /**
@@ -55,12 +55,13 @@ const styles = StyleSheet.create({
     marginVertical: 24,
   },
   textTitle: {
-    ...general.medium48,
-    color: 'white',
+    fontSize: fontSize48,
+    color: textColor,
+    fontWeight: 'bold',
   },
   textSubTitle: {
     ...general.medium20,
-    color: 'white',
+    color: textColor,
   },
   containerCategories: {
     backgroundColor: 'white',

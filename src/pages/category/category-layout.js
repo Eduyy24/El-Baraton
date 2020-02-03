@@ -1,13 +1,40 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
 import EndButtonCart from './components/end-button-cart';
 import SubCategoriesShip from './components/sub-categories-ship';
+import Line from '../../components/line';
 
 export default function CategoryLayout(props) {
+  const {initialData} = props;
+  const renderSectionSubCategory = (data, index) => (
+    <FlatList
+      data={data}
+      horizontal
+      renderItem={({item}) => (
+        <SubCategoriesShip
+          title={item.name}
+          onPress={() =>
+            props.onPressShipSubCategory(index + 1, item.sublevels)
+          }
+        />
+      )}
+    />
+  );
+
   return (
     <View style={styles.container}>
       <View style={styles.section1}>
-        <SubCategoriesShip />
+        <View style={styles.sectionSubCategories}>
+          <FlatList
+            data={initialData}
+            renderItem={({item, index}) => renderSectionSubCategory(item, index)}
+            ItemSeparatorComponent={() => <Line />}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        </View>
+        <View style={styles.sectionProducts}>
+          <Text>hola</Text>
+        </View>
       </View>
       <View style={styles.section2}>
         <View style={styles.sectionRoderBy}>
@@ -35,6 +62,12 @@ const styles = StyleSheet.create({
     flex: 0.25,
   },
   sectionRoderBy: {
+    flex: 1,
+  },
+  sectionSubCategories: {
+    paddingHorizontal: 16,
+  },
+  sectionProducts: {
     flex: 1,
   },
 });
