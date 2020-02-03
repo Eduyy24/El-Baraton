@@ -16,7 +16,7 @@ export default function CategoryLayout(props) {
     onPressAddCart,
     numProductCart,
     onPressOrder,
-    onPressgoToCart
+    onPressgoToCart,
   } = props;
 
   const renderSectionSubCategory = (data, index) => (
