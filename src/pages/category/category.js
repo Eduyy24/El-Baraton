@@ -8,21 +8,28 @@ class Category extends Component {
   constructor(props) {
     super(props);
   }
+
   componentDidMount() {
-    const {navigation, categories} = this.props;
+    const {navigation, categories, products} = this.props;
     const {subCategories} = this.state;
 
-    //Extraigo el id de la categoría para consultar toda la información de la misma.
-    const id = navigation.getParam('id').toString();
+    //se extrae el id de la categoría para consultar toda la información de la misma.
+    const id = navigation.getParam('id');
     subCategories.push(categories[id].sublevels);
-    this.setState({subCategories});
+    this.setState({
+      subCategories,
+      productsShow: products.filter(product => product.sublevel_id === id),
+    });
   }
   state = {
     subCategories: [],
+    productsShow: [],
   };
 
-  onPressShipSubCategory = (indexSection, data) => {
+  onPressShipSubCategory = (id, indexSection, data) => {
     const {subCategories} = this.state;
+    const {products} = this.props;
+
     if (data) {
       if (subCategories[indexSection]) {
         subCategories[indexSection] = data;
@@ -34,15 +41,20 @@ class Category extends Component {
         subCategories.splice(indexSection, 1);
       }
     }
-    this.setState({subCategories});
+
+    this.setState({
+      subCategories,
+      productsShow: products.filter(product => product.sublevel_id === id),
+    });
   };
 
   render() {
-    const {subCategories} = this.state;
+    const {subCategories, productsShow} = this.state;
     return (
       <CategoryLayout
         initialData={subCategories}
         onPressShipSubCategory={this.onPressShipSubCategory}
+        productsShow={productsShow}
       />
     );
   }
@@ -51,6 +63,7 @@ class Category extends Component {
 function mapStateToProps(state) {
   return {
     categories: state.productsReducer.categories,
+    products: state.productsReducer.products,
   };
 }
 

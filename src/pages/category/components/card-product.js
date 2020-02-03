@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     height: sizeImage * 1.3,
     borderRadius: 10,
     overflow: 'hidden',
+    margin: 10,
   },
   image: {
     width: sizeImage,

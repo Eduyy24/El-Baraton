@@ -6,8 +6,6 @@
  * @flow
  */
 
- //https://source.unsplash.com/random/200x200/?food
-
 import React from 'react';
 import {
   SafeAreaView,

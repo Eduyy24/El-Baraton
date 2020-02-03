@@ -6,7 +6,8 @@ import Line from '../../components/line';
 import CardProduct from './components/card-product';
 
 export default function CategoryLayout(props) {
-  const {initialData} = props;
+  const {initialData, productsShow} = props;
+
   const renderSectionSubCategory = (data, index) => (
     <FlatList
       data={data}
@@ -15,7 +16,7 @@ export default function CategoryLayout(props) {
         <SubCategoriesShip
           title={item.name}
           onPress={() =>
-            props.onPressShipSubCategory(index + 1, item.sublevels)
+            props.onPressShipSubCategory(item.id, index + 1, item.sublevels)
           }
         />
       )}
@@ -36,8 +37,22 @@ export default function CategoryLayout(props) {
           />
         </View>
         <View style={styles.sectionProducts}>
-          <CardProduct/>
-          <CardProduct/>
+          <FlatList
+            data={productsShow}
+            renderItem={({item}) => (
+              <CardProduct
+                uriImageProduct={item.image}
+                nameProduct={item.name}
+                priceProduct={item.price}
+                onPressAddCart={() => {}}
+                available={item.available}
+              />
+            )}
+            extraData={productsShow}
+            numColumns={2}
+            keyExtractor={(item, index) => index.toString()}
+            contentContainerStyle={{alignItems: 'center'}}
+          />
         </View>
       </View>
       <View style={styles.section2}>

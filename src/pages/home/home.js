@@ -7,7 +7,7 @@ import categoriesFile from '../../resources/categories.json';
 import productsFile from '../../resources/products.json';
 
 class Home extends Component {
-  componentDidMount() {
+  async componentDidMount() {
     const {actions} = this.props;
     actions.setCategoriesStore(categoriesFile.categories);
     actions.setProductStore(productsFile.products);
