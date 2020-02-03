@@ -87,16 +87,23 @@ class Category extends Component {
     this.setState({productsShow});
   };
 
-  onPressAddCart = () => {};
+  onPressAddCart = product => {
+    const {actions} = this.props;
+    actions.setProductCartStore(product);
+    //actions.cleanProducCarttStore();
+  };
 
   render() {
     const {subCategories, productsShow} = this.state;
+    const {cart} = this.props;
     return (
       <CategoryLayout
         initialData={subCategories}
         onPressShipSubCategory={this.onPressShipSubCategory}
         productsShow={productsShow}
         onPressfilter={this.onPressfilter}
+        onPressAddCart={this.onPressAddCart}
+        numProductCart={cart.length}
       />
     );
   }
@@ -106,6 +113,7 @@ function mapStateToProps(state) {
   return {
     categories: state.productsReducer.categories,
     products: state.productsReducer.products,
+    cart: state.productsReducer.cart,
   };
 }
 

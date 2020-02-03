@@ -9,7 +9,13 @@ import {textColor, general, primaryColor} from '../../styles/styles';
 import OptionOrderShip from './components/option-order-chip';
 
 export default function CategoryLayout(props) {
-  const {initialData, productsShow, onPressfilter, onPressAddCart} = props;
+  const {
+    initialData,
+    productsShow,
+    onPressfilter,
+    onPressAddCart,
+    numProductCart,
+  } = props;
 
   const renderSectionSubCategory = (data, index) => (
     <FlatList
@@ -76,7 +82,7 @@ export default function CategoryLayout(props) {
             />
           </View>
         </View>
-        <EndButtonCart />
+        <EndButtonCart numProducts={numProductCart} />
       </View>
     </View>
   );
