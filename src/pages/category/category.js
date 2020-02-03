@@ -63,7 +63,7 @@ class Category extends Component {
     });
   };
 
-  onPressfilter = type => {
+  onPressOrder = type => {
     var {productsShow, auxProductsShow} = this.state;
     switch (type) {
       case 'price':
@@ -87,10 +87,16 @@ class Category extends Component {
     this.setState({productsShow});
   };
 
-  onPressAddCart = product => {
+  onPressfilter = () => {
     const {actions} = this.props;
-    actions.setProductCartStore(product);
-    //actions.cleanProducCarttStore();
+    actions.cleanProducCarttStore();
+  };
+
+  onPressAddCart = product => {
+    const {actions, cart} = this.props;
+    cart.push(product);
+    actions.setProductCartStore(cart);
+    this.setState({productsShow: this.state.productsShow}); //obligar a hacer re-render
   };
 
   render() {
@@ -102,6 +108,7 @@ class Category extends Component {
         onPressShipSubCategory={this.onPressShipSubCategory}
         productsShow={productsShow}
         onPressfilter={this.onPressfilter}
+        onPressOrder={this.onPressOrder}
         onPressAddCart={this.onPressAddCart}
         numProductCart={cart.length}
       />

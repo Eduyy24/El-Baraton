@@ -8,9 +8,9 @@ export const setProductStore = products => ({
   products,
 });
 
-export const setProductCartStore = product => ({
+export const setProductCartStore = cart => ({
   type: 'SET_PRODUCT_CART',
-  product,
+  cart,
 });
 
 export const cleanProducCarttStore = products => ({

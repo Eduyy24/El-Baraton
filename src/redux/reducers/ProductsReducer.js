@@ -13,10 +13,7 @@ function ProductsReducer(state = inicialState, action) {
       return {...state, categories: action.categories};
     }
     case 'SET_PRODUCT_CART': {
-      let {cart} = state;
-      cart.push(action.product);
-      console.log(cart.length);
-      return {...state, cart};
+      return {...state, cart: action.cart};
     }
     case 'CLEAN_CART': {
       return {...state, cart: []};

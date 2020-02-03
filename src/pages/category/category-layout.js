@@ -15,6 +15,7 @@ export default function CategoryLayout(props) {
     onPressfilter,
     onPressAddCart,
     numProductCart,
+    onPressOrder,
   } = props;
 
   const renderSectionSubCategory = (data, index) => (
@@ -70,15 +71,15 @@ export default function CategoryLayout(props) {
           <View style={styles.containerOptionsOrder}>
             <OptionOrderShip
               title="Precio"
-              onPress={() => onPressfilter('price')}
+              onPress={() => onPressOrder('price')}
             />
             <OptionOrderShip
               title="Disponibilidad"
-              onPress={() => onPressfilter('available')}
+              onPress={() => onPressOrder('available')}
             />
             <OptionOrderShip
               title="Cantidad"
-              onPress={() => onPressfilter('quantity')}
+              onPress={() => onPressOrder('quantity')}
             />
           </View>
         </View>
