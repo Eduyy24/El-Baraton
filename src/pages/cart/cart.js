@@ -3,14 +3,14 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actionsMap from '../../actions/actions';
 import CartLayout from './cart-layout';
-import {Alert} from 'react-native';
+import Toast from '../../modules-native/toast';
 
 class Cart extends Component {
   state = {update: false};
   onPressBuy = () => {
     const {actions} = this.props;
     actions.cleanProducCarttStore();
-    Alert.alert('¡Tu compra se a realizado con exito!');
+    Toast.show('¡Tu compra se a realizado con exito!', Toast.SHORT);
   };
 
   onPressMore = index => {
