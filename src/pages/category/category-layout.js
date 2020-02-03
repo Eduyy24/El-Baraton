@@ -9,7 +9,7 @@ import {textColor, general, primaryColor} from '../../styles/styles';
 import OptionOrderShip from './components/option-order-chip';
 
 export default function CategoryLayout(props) {
-  const {initialData, productsShow, onPressfilter} = props;
+  const {initialData, productsShow, onPressfilter, onPressAddCart} = props;
 
   const renderSectionSubCategory = (data, index) => (
     <FlatList
@@ -44,12 +44,8 @@ export default function CategoryLayout(props) {
             data={productsShow}
             renderItem={({item}) => (
               <CardProduct
-                uriImageProduct={item.image}
-                nameProduct={item.name}
-                priceProduct={item.price}
-                onPressAddCart={() => {}}
-                available={item.available}
-                quantity={item.quantity}
+                product={item}
+                onPressAddCart={() => onPressAddCart(item)}
               />
             )}
             extraData={productsShow}

@@ -87,6 +87,8 @@ class Category extends Component {
     this.setState({productsShow});
   };
 
+  onPressAddCart = () => {};
+
   render() {
     const {subCategories, productsShow} = this.state;
     return (

@@ -1,6 +1,7 @@
 const inicialState = {
-  products: {},
-  categories: {},
+  products: [],
+  categories: [],
+  cart: [],
 };
 
 function ProductsReducer(state = inicialState, action) {
@@ -10,6 +11,12 @@ function ProductsReducer(state = inicialState, action) {
     }
     case 'SET_CATEGORIES': {
       return {...state, categories: action.categories};
+    }
+    case 'SET_PRODUCT_CART': {
+      return {...state, cart: state.cart.push(action.product)};
+    }
+    case 'CLEAN_CART': {
+      return {...state, cart: []};
     }
     default:
       return state;

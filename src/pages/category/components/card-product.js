@@ -13,14 +13,7 @@ import {textColor, general, primaryColor} from '../../../styles/styles';
 const {width} = Dimensions.get('window');
 
 export default function CardProduct(props) {
-  const {
-    uriImageProduct,
-    nameProduct,
-    priceProduct,
-    onPressAddCart,
-    available,
-    quantity,
-  } = props;
+  const {product, onPressAddCart} = props;
 
   const CheckComponent = propsCheck => (
     <View style={styles.containerCheck}>
@@ -36,14 +29,14 @@ export default function CardProduct(props) {
     <View style={styles.containerCard}>
       <Image
         source={{
-          uri: uriImageProduct,
+          uri: product.image,
         }}
         style={styles.image}
       />
-      <Text style={styles.text}>{nameProduct || ''}</Text>
-      <Text style={styles.text}>{formatMoney(priceProduct)}</Text>
-      <Text style={styles.text}>Stok: {quantity || '0'}</Text>
-      <CheckComponent enable={available} />
+      <Text style={styles.text}>{product.name || ''}</Text>
+      <Text style={styles.text}>{formatMoney(product.price)}</Text>
+      <Text style={styles.text}>Stok: {product.quantity || '0'}</Text>
+      <CheckComponent enable={product.available} />
       <TouchableOpacity style={styles.addCartButton} onPress={onPressAddCart}>
         <Icon name="cart-plus" size={24} color={primaryColor} />
       </TouchableOpacity>
