@@ -20,6 +20,8 @@ caja de texto que permita realizar búsquedas de productos por nombre en dichos
 subniveles.
 - Además, el ecommerce debe ser responsive.
 
+Nota: no se alcanzo a realizar la implentación de este feature "Un subnivel final es aquel que no tiene más subniveles, en éste caso debe aparecer una caja de texto que permita realizar búsquedas de productos por nombre en dichos", aunque dentro de la solucion estaba contemplado por falta de tiempo no se logró.
+
 ## Diseño
 Para el diseño de la solucion se planteo un wireframes usando la herramienta Adobe XD.
 Link con el diseño: https://xd.adobe.com/view/6362b65a-1893-4949-4a9c-9489780dff10-1553/
@@ -76,3 +78,7 @@ para el componente de Slider Nativo
    * "react-redux": "7.1.3",
    * "redux": "4.0.5",
    * "redux-persist": "6.0.0",
+   
+ ## Pruebas unitarias
+ Para la pruebas se usó la libreria Jest, basicamente se realizaron pruebas de snaptshot en todo los componentes y utilidades,
+ dado que por falta de tiempo no se puede realizar pruebas sobre el store de redux y las acciones del mismo.
