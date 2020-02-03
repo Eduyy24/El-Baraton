@@ -9,6 +9,11 @@ class Category extends Component {
     super(props);
   }
 
+  state = {
+    subCategories: [],
+    productsShow: [],
+  };
+
   componentDidMount() {
     const {navigation, categories, products} = this.props;
     const {subCategories} = this.state;
@@ -21,10 +26,6 @@ class Category extends Component {
       productsShow: products.filter(product => product.sublevel_id === id),
     });
   }
-  state = {
-    subCategories: [],
-    productsShow: [],
-  };
 
   onPressShipSubCategory = (id, indexSection, data) => {
     const {subCategories} = this.state;
@@ -39,6 +40,11 @@ class Category extends Component {
     } else {
       if (subCategories[indexSection]) {
         subCategories.splice(indexSection, 1);
+      }
+    }
+    if (subCategories[indexSection + 1]) {
+      for (var i = indexSection + 1; i < subCategories.length; i++) {
+        subCategories.splice(i, 1);
       }
     }
 
